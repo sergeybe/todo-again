@@ -1,0 +1,23 @@
+$font-family: "PFDinDisplayPro-Light", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-size: 17px;
+$font-size-search-box: 26px;
+
+$width: 458px;
+
+// 1. Зеленые — выполненные задачи
+// 2. Синие — задачи, которые назначены на сегодня
+// 3. Серые — задачи, которые выполнены на более поздний срок
+// 4. Красные — просроченные
+
+$green: #8cc640;
+$blue: #00aeef;
+$gray: #aaaaaa;
+$red: #ff5c9d;
+
+
+$complited-task: $green;
+$today-task: $blue;
+$future-task: $gray;
+$overdue-task: $red;
+
+

@@ -1,0 +1,9 @@
+<input type="checkbox" id="task-<%= self.id %>" <%= complited ? 'checked' : '' %> />
+<label for="task-<%= self.id %>"><span></span></label>
+
+<div class="description">
+    <span><%= description %></span>
+    <div class="datetime">
+        <span class="<%= self.datetimeClass %>"><%= self.datetime.format('D.MM.YYYY H:mm') %></span>
+    <div>
+</div>

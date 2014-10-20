@@ -1,0 +1,170 @@
+@import "variables";
+@import "fonts";
+@import "reset";
+@import "mixins";
+
+#app {
+    z-index: 100;
+}
+
+#maket {
+    display: none;
+    background-image: url('images/maket.png');
+    background-position: top center;
+    background-repeat: no-repeat;
+    position: absolute;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 1376px;
+    height: 976px;
+}
+
+.wrapper {
+}
+
+.panel {
+    width: $width;
+
+    header {
+        height: 61px; // And 9px shadow
+        width: $width;
+        background-color: #bfbfbf;
+        position: fixed;
+        top: 0;
+        left: 0;
+        box-shadow: 0px 4px 4px 0px rgba(218, 218, 218, 0.75);
+    }
+
+    #content {
+        margin-top: 70px;
+
+        #now {
+            float: right;
+            margin-right: 15px;
+        }
+    }
+}
+
+// Components
+
+#search-box {
+    padding-top: 13px;
+    padding-left: 13px;
+
+    input[type="text"] {
+        float: left;
+        border: 0;
+        height: 34px;
+        width: 266px - 10px - 47px; // Save padding in width;
+        background-color: #e8e8e8;
+        border-radius: 8px;
+        font-family: $font-family;
+        font-size: $font-size;
+        font-size: $font-size-search-box;
+        outline: none;
+        display: block;
+        background-image: url('images/search-icon.png');
+        background-repeat: no-repeat;
+        background-position: 9px 6px;
+        padding-left: 47px;
+        padding-right: 10px;
+//	-webkit-box-shadow: inset 0 0 0 50px #fff;
+//	-webkit-text-fill-color: #000; 
+
+	&:-webkit-autofill {
+	}
+
+        &:focus {
+            background-color: #fff;
+            background-image: url('images/focused-search-icon.png');
+            background-repeat: no-repeat;
+            background-position: 9px 6px;
+            padding-left: 47px;
+            padding-right: 10px;
+        }
+    }
+
+    .add-button {
+        float: right;
+        width: 26px;
+        height: 26px;
+        background-image: url('images/add-button.png');
+        background-repeat: no-repeat;
+        background-position: 0;
+        margin-top: 5px;
+        margin-right: 23px;
+    }
+}
+
+#tasks ul {
+    padding-top: 10px;
+    list-style: none;
+    
+    li.task {
+
+	input[type="checkbox"] {
+	    display: none;
+
+	    & + label span {
+		display: inline-block;
+        	width: 25px;
+        	height: 25px;
+        	user-select: none;
+        	background: url(images/clear-checkbox.png) left top no-repeat;
+	    }
+
+	    &:checked + label span {
+		display: inline-block;
+        	width: 25px;
+        	height: 25px;
+        	user-select: none;
+        	background: url(images/checked-checkbox.png) left top no-repeat;
+	    }
+
+	    &:checked ~ div.description span {
+		color: #9c9c9c;
+	    }
+
+	}
+
+	label {
+	    float: left;
+	    padding-top: 23px;
+	    padding-left: 22px;
+	    user-select: none;
+	}
+	
+	
+	.description {
+	    font-size: 26px;
+	    padding-left: 64px;
+	    padding-top: 18px;	
+	    
+	    .datetime {
+		font-size: 16px
+	    }
+	}
+    }
+}
+
+
+// Colors for datetime
+
+.complited-task {
+    color: $complited-task;
+}
+
+.today-task {
+    color: $today-task;
+}
+
+.future-task {
+    color: $future-task;
+}
+
+.overdue-task {
+    color: $overdue-task;
+}
+
