@@ -19,9 +19,9 @@ function(Marionette, moment, template) {
     },
 
     initialize: function() {
-      this.today = moment.unix(this.model.collection.today);
+      this.today = moment(this.model.collection.today);
       this.id = 'task-' + this.model.cid;
-      this.datetime = moment.unix(this.model.get('datetime'));
+      this.datetime = moment(this.model.get('datetime'));
 
       if (this.model.get('complited')) {
         this.datetimeClass = 'complited-task';
@@ -38,6 +38,7 @@ function(Marionette, moment, template) {
     templateHelpers: function() {
       return {
         self: this,
+        moment: moment,
         status: function() {
           return 42;
         },

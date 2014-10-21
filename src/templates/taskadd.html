@@ -1,0 +1,14 @@
+<div class="dialog-wrapper">
+    <div class="dialog popup bottom">
+        <div class="dialog-content">
+            <input type="checkbox" name="complited" id="add-checkbox"/>
+            <label for="add-checkbox"><span></span></label>
+
+            <div class="texts">
+                <textarea name="description"></textarea>
+                <input type="text" name="datetime" value="<%= moment(datetime).format('D.MM.YYYY H:mm') %>"/>
+                <button type="submit">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>

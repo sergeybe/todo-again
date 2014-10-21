@@ -1,6 +1,7 @@
 node_modules
 bower_components
 npm-debug.log
+.sass-cache
 
 static/app.js
 static/app.min.js

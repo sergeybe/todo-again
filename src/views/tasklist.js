@@ -35,7 +35,7 @@ function(Marionette, moment, TaskCollection, TaskItemView, template) {
     },
 
     onCollectionSync: function() {
-      var today = moment.unix(this.collection.today);
+      var today = moment(this.collection.today);
       this.ui.now.html(today.format('D.MM.YYYY H:mm'));
     }
   });

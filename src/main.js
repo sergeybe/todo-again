@@ -8,8 +8,8 @@ require.config({
     backbone: '../bower_components/backbone/backbone',
     marionette: '../bower_components/marionette/lib/backbone.marionette',
     text: '../bower_components/requirejs-text/text',
-    moment: '../bower_components/moment/moment'
-///    momentRu: '../bower_components/moment/locale/ru'
+    moment: '../bower_components/moment/moment',
+    momentRu: '../bower_components/moment/locale/ru'
   },
   shim: {
     backbone: {
@@ -26,9 +26,9 @@ require.config({
     jquery: {
       exports: '$'
     },
-    moment: {
+//    moment: {
 //      deps: ['momentRu']
-    }
+//    }
   },
   config: {
     moment: {
