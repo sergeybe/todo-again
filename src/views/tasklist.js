@@ -29,11 +29,6 @@ function(Marionette, moment, TaskCollection, TaskItemView, template) {
       'sync': 'onCollectionSync'
     },
 
-    initialize: function() {
-      this.collection = new TaskCollection();
-      this.collection.fetch();
-    },
-
     onCollectionSync: function() {
       var today = moment(this.collection.today);
       this.ui.now.html(today.format('D.MM.YYYY H:mm'));

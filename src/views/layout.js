@@ -1,10 +1,18 @@
 define([
   'marionette',
+  'collections/tasks',
   'views/tasklist',
   'views/taskadd',
+  'views/search',
   'text!templates/layout.html'
 ],
-function(Marionette, TaskListView, TaskAddView, template) {
+function(
+  Marionette,
+  TaskCollection,
+  TaskListView,
+  TaskAddView,
+  SearchView,
+  template) {
 
   return Marionette.LayoutView.extend({
     template: _.template(template),
@@ -14,19 +22,25 @@ function(Marionette, TaskListView, TaskAddView, template) {
     },
 
     regions: {
-      searchBox: '#search-box',
+      searchbox: '#search-box',
       dialog: '#dialog',
       tasks: '#tasks'
     },
 
     onShow: function() {
-      this.tasks.show(new TaskListView());
+      var collection = new TaskCollection();
+      collection.fetch();
+
+      var taskListView = new TaskListView({collection: collection});
+      var searchView = new SearchView({collection: collection});
+
+      this.tasks.show(taskListView);
+      this.searchbox.show(searchView);
 
       this.ui.addButton.on('click', $.proxy(function() {
         if (this.dialog.currentView) {
           this.dialog.reset();
         } else {
-          var collection =  this.tasks.currentView.collection;
           this.dialog.show(new TaskAddView({collection: collection}));
         }
       }, this));

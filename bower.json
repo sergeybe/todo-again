@@ -10,8 +10,8 @@
     "requirejs-text": "~2.0.12",
     "marionette": "~2.2.1",
     "moment": "~2.8.3",
-    "requirejs-domready": "~2.0.1"
+    "requirejs-domready": "~2.0.1",
+    "jScrollPane": "~2.0.14"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

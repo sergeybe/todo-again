@@ -9,7 +9,8 @@ require.config({
     marionette: '../bower_components/marionette/lib/backbone.marionette',
     text: '../bower_components/requirejs-text/text',
     moment: '../bower_components/moment/moment',
-    momentRu: '../bower_components/moment/locale/ru'
+    momentRu: '../bower_components/moment/locale/ru',
+    jscrollpane: '../bower_components/jScrollPane/script/jquery.jscrollpane'
   },
   shim: {
     backbone: {
@@ -26,9 +27,10 @@ require.config({
     jquery: {
       exports: '$'
     },
-//    moment: {
-//      deps: ['momentRu']
-//    }
+    jscrollpane: {
+      deps: ['jquery'],
+      exports: '$.fn.jScrollPane'
+    },
   },
   config: {
     moment: {

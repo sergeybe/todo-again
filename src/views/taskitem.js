@@ -1,14 +1,14 @@
 define([
   'marionette',
   'moment',
-  'text!templates/taskitem.html'
+  'text!templates/taskitem.html',
+  'text!templates/tasksearchitem.html'
 ],
-function(Marionette, moment, template) {
+function(Marionette, moment, template1, template2) {
 
   return Marionette.ItemView.extend({
     tagName: 'li',
     className: 'task',
-    template: _.template(template),
 
     ui: {
       checkbox: 'input[type="checkbox"]'
@@ -18,7 +18,7 @@ function(Marionette, moment, template) {
       'change @ui.checkbox': 'checkbox:changed'
     },
 
-    initialize: function() {
+    initialize: function(options) {
       this.today = moment(this.model.collection.today);
       this.id = 'task-' + this.model.cid;
       this.datetime = moment(this.model.get('datetime'));
@@ -45,7 +45,14 @@ function(Marionette, moment, template) {
       };
     },
 
-    onCheckboxChanged: function(e) {
+    getTemplate: function() {
+      if (this.options.type === 'search') {
+        return _.template(template2);
+      }
+      return _.template(template1);
+    },
+
+    onCheckboxChanged: function() {
       console.log('checked');
       this.model.set('complited', !this.model.get('complited'));
       // this.model.save();
