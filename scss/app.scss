@@ -93,7 +93,6 @@
 .result-wrapper {
     position: fixed;
     top: 66px;
-    width: 56px;
 }
 
 #result {
@@ -101,14 +100,13 @@
     border: 1px solid #d1d1d1;
     border-radius: 7px;
     background-color: #fff;
-    width: 300px;
+    width: 245px;
+    height: 176px;
     z-index: 150;
     padding: 10px;
 
     ul {
 	list-style: none;
-//	height: 96px;
-//	overflow-y: scroll;
     }
 
     ul > li > label {
@@ -119,7 +117,7 @@
 .scroller
 {
     width: 100%;
-    height: 96px;
+    height: 176px;
     overflow: auto;
     outline: none;
 }
@@ -181,8 +179,10 @@
         border-radius: 8px;
         background-color: #fff;
         margin-left: 10px;
-        margin-right: 10px;
+        margin-right: 8px;
         padding: 10px;
+        padding-top: 15px;
+        height: 175px;
 
         .dialog-content {
 
@@ -203,7 +203,7 @@
                     font-size: 18px;
                     margin-bottom: 12px;
                     box-sizing: border-box;
-                    height: 66px;
+                    height: 91px;
                     overflow: auto;
 
                     &:focus {
@@ -217,7 +217,7 @@
                     width: 100%;
                     border: 1px solid #9d9d9d;
                     font-family: $font-family;
-                    font-size: 18px;
+                    font-size: 24px;
                     margin-bottom: 12px;
                     box-sizing: border-box;
 
@@ -229,6 +229,10 @@
 
                 button {
                     float: right;
+                    font-family: $font-family;
+                    font-size: 20px;
+                    padding-left: 12px;
+                    padding-right: 13px;
                 }
                 @include clearfix;
             }
@@ -290,7 +294,7 @@ input[type="checkbox"] {
 }
 
 .popup.left:before, .popup.left:after {
-    left: 37px;
+    left: 49px;
 }
 
 .popup.right:before, .popup.right:after {
