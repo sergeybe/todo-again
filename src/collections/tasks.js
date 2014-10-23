@@ -1,8 +1,9 @@
 define([
   'backbone',
+  'moment',
   'models/task'
 ],
-function(Backbone, TaskModel) {
+function(Backbone, moment, TaskModel) {
 
   return Backbone.Collection.extend({
     model: TaskModel,
@@ -27,6 +28,37 @@ function(Backbone, TaskModel) {
         });
       }
       return tasks;
+    },
+
+    stats: function() {
+      var complitedTasks = 0;
+      var todayTasks = 0;
+      var futureTasks = 0;
+      var overdueTasks = 0;
+
+      this.each(function(task) {
+        if (task.get('complited')) {
+          complitedTasks++;
+        } else {
+          var datetime = moment(task.get('datetime'));
+          var today = moment(this.today);
+
+          if (today.isBefore(datetime, 'day')) {
+            futureTasks++;
+          } else if (today.isAfter(datetime, 'day')) {
+            overdueTasks++;
+          } else {
+            todayTasks++;
+          }
+        }
+      });
+
+      return {
+        complitedTasks: complitedTasks,
+        overdueTasks: overdueTasks,
+        todayTasks: todayTasks,
+        futureTasks: futureTasks
+      };
     }
   });
 

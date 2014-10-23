@@ -296,6 +296,57 @@ input[type="checkbox"] {
     right: 21px;
 }
 
+// Diagram
+
+#diagram {
+    width: $width;
+
+    .up-label, .bottom-label {
+        text-align: center;
+    }
+
+    .up-label {
+        padding-bottom: 6px;
+    }
+
+    .bottom-label {
+        padding-top: 6px;
+    }
+
+    .diagram-center {
+        display: table;
+        margin: 0 auto;
+    }
+
+    .left-label {
+        display: table-cell;
+        vertical-align: middle;
+        padding-right: 6px;
+    }
+
+    .right-label {
+        display: table-cell;
+        vertical-align: middle;
+        padding-left: 6px;
+    }
+
+    .circle {
+        display: table-cell;
+        vertical-align: middle;
+        height: 220px;
+        width: 220px;
+        border-radius: 50%;
+        background-color: gray;
+
+        .hole {
+            height: 172px;
+            width: 172px;
+            margin: auto;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+    }
+}
 
 // Colors for datetime
 
