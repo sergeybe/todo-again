@@ -204,6 +204,7 @@
                     margin-bottom: 12px;
                     box-sizing: border-box;
                     height: 66px;
+                    overflow: auto;
 
                     &:focus {
                         border: 1px solid #9d9d9d;
@@ -316,6 +317,10 @@ input[type="checkbox"] {
     .diagram-center {
         display: table;
         margin: 0 auto;
+
+        svg {
+            font-size: 24px;
+        }
     }
 
     .left-label {
@@ -364,4 +369,20 @@ input[type="checkbox"] {
 
 .overdue-task {
     color: $overdue-task;
+}
+
+#complited-info {
+    fill: $complited-task;
+}
+
+#today-info {
+    fill: $today-task;
+}
+
+#future-info {
+    fill: $future-task;
+}
+
+#overdue-info {
+    fill: $overdue-task;
 }

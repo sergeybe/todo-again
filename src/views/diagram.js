@@ -16,7 +16,11 @@ function(Marionette, template) {
     },
 
     ui: {
-      arcs: '#arcs'
+      arcs: '#arcs',
+      complitedInfo: '#complited-info',
+      overdueInfo: '#overdue-info',
+      todayInfo: '#today-info',
+      futureInfo: '#future-info'
     },
 
     collectionEvents: {
@@ -40,6 +44,12 @@ function(Marionette, template) {
       this.drawPie(complitedTasks, overdueTasks, this.colors.overdue);
       this.drawPie(overdueTasks, todayTasks, this.colors.today);
 //      this.drawPie(todayTasks, Math.PI2, this.colors.future);
+
+      var tmp = 100.0 / this.collection.length;
+      this.ui.complitedInfo.html(Math.round(tmp * stats.complitedTasks) + '%');
+      this.ui.overdueInfo.html(Math.round(tmp * stats.overdueTasks) + '%');
+      this.ui.todayInfo.html(Math.round(tmp * stats.todayTasks) + '%');
+      this.ui.futureInfo.html(Math.round(tmp * stats.futureTasks) + '%');
     },
 
     drawPie: function(from, to, color) {
