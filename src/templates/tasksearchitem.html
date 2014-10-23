@@ -1,6 +1,6 @@
 <div class="description">
     <span><%= description ? description : '-' %></span>
     <div class="datetime">
-        <span class="<%= self.datetimeClass %>"><%= self.datetime.format('D.MM.YYYY H:mm') %></span>
+        <span class="<%= getCssClass() %>"><%= datetime.format('D.MM.YYYY H:mm') %></span>
     <div>
 </div>

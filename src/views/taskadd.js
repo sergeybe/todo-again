@@ -44,6 +44,7 @@ function(Marionette, moment, TaskModel, template) {
 
     onSubmit: function(data) {
       this.collection.add(data);
+      this.collection.trigger('change');
       this.destroy();
     }
   });

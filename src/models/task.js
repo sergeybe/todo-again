@@ -1,15 +1,21 @@
 define([
   'backbone',
+  'moment'
 ],
-function(Backbone) {
+function(Backbone, moment) {
 
   return Backbone.Model.extend({
     defaults: function() {
       return {
         description: '',
-        datetime: new Date().getTime(),
+        datetime: moment(),
         complited: false
       };
+    },
+
+    parse: function(resp) {
+      resp.datetime = moment(resp.datetime);
+      return resp;
     }
   });
 

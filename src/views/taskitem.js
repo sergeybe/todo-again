@@ -48,7 +48,6 @@ function(Marionette, moment, template1, template2) {
     },
 
     onCheckboxChanged: function() {
-      console.log('checked');
       this.model.set('complited', !this.model.get('complited'));
       // this.model.save();
       this.render();

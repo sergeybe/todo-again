@@ -11,7 +11,7 @@ function(Backbone, moment, TaskModel) {
     today: 0,
 
     parse: function(data) {
-      this.today = data.today;
+      this.today = moment(data.today);
       return data.tasks;
     },
 
@@ -35,23 +35,22 @@ function(Backbone, moment, TaskModel) {
       var overdueTasks = 0;
       var todayTasks = 0;
       var futureTasks = 0;
-      var today = moment(this.today);
 
       this.each(function(task) {
         if (task.get('complited')) {
           complitedTasks++;
         } else {
-          var datetime = moment(task.get('datetime'));
+          var datetime = task.get('datetime');
 
-          if (today.isBefore(datetime, 'day')) {
+          if (this.today.isBefore(datetime, 'day')) {
             futureTasks++;
-          } else if (today.isAfter(datetime, 'day')) {
+          } else if (this.today.isAfter(datetime, 'day')) {
             overdueTasks++;
           } else {
             todayTasks++;
           }
         }
-      });
+      }, this);
 
       return {
         complitedTasks: complitedTasks,

@@ -8,31 +8,38 @@ function(Marionette, template) {
     template: _.template(template),
     radius: 110,
 
+    colors: {
+      complited: '#8cc640',
+      overdue: '#ff5c9d',
+      today: '#00aeef',
+      future: '#aaaaaa'
+    },
+
     ui: {
       arcs: '#arcs'
     },
 
     collectionEvents: {
       change: 'onCollactionChanged',
-      sync: 'onCollactionChanged'
+      sync: 'onCollactionChanged',
     },
 
     onCollactionChanged: function() {
       this.ui.arcs.empty();
 
       var stats = this.collection.stats();
-      console.log(stats);
       var len = this.collection.length;
+      var PI2 = 2 * Math.PI;
 
-      var complitedTasks = 2 * Math.PI * stats.complitedTasks / len;
-      var todayTasks =  complitedTasks + 2 * Math.PI * stats.todayTasks  / len;
-      var futureTasks = todayTasks + 2 * Math.PI * stats.futureTasks / len;
-//      var overdueTasks = futureTasks + 2 * Math.PI * stats.overdueTasks / len;
+      var complitedTasks = PI2 * stats.complitedTasks / len;
+      var overdueTasks = complitedTasks + PI2 * stats.overdueTasks / len;
+      var todayTasks =  overdueTasks + PI2 * stats.todayTasks  / len;
+//      var futureTasks = todayTasks + PI2 * stats.futureTasks / len;
 
-      this.drawPie(0, complitedTasks, '#8cc640');
-      this.drawPie(complitedTasks, todayTasks, '#00aeef');
-      this.drawPie(todayTasks, futureTasks, '#ff5c9d');
-//       this.drawPie(futureTasks, overdueTasks, '');
+      this.drawPie(0, complitedTasks, this.colors.complited);
+      this.drawPie(complitedTasks, overdueTasks, this.colors.overdue);
+      this.drawPie(overdueTasks, todayTasks, this.colors.today);
+//      this.drawPie(todayTasks, Math.PI2, this.colors.future);
     },
 
     drawPie: function(from, to, color) {
@@ -47,7 +54,6 @@ function(Marionette, template) {
         ' A' + this.radius  + ',' + this.radius +
         ' 0 ' + (to - from > Math.PI ? '1,1 ' : '0,1 ') +
         x2 + ',' + y2 + ' z';
-      console.log(tmp);
 
       this.ui.arcs.append(
         $(document.createElementNS('http://www.w3.org/2000/svg', 'path'))
