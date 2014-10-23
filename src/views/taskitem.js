@@ -18,19 +18,25 @@ function(Marionette, moment, template1, template2) {
       'change @ui.checkbox': 'checkbox:changed'
     },
 
-    initialize: function() {
-      this.today = moment(this.model.collection.today);
-      this.id = 'task-' + this.model.cid;
-      this.datetime = moment(this.model.get('datetime'));
-    },
-
     templateHelpers: function() {
       return {
         self: this,
+        id: 'task-' + this.model.cid,
         moment: moment,
-        status: function() {
-          return 42;
-        },
+        today: moment(this.model.collection.today),
+        datetime: moment(this.model.get('datetime')),
+        getCssClass: function() {
+          if (this.complited) {
+            return 'complited-task';
+          }
+          if (this.today.isBefore(this.datetime, 'day')) {
+            return 'future-task';
+          }
+          if (this.today.isAfter(this.datetime, 'day')) {
+            return 'overdue-task';
+          }
+          return 'today-task';
+        }
       };
     },
 
@@ -39,19 +45,6 @@ function(Marionette, moment, template1, template2) {
         return _.template(template2);
       }
       return _.template(template1);
-    },
-
-    onBeforeRender: function() {
-      console.log("ItemView::onRender");
-      if (this.model.get('complited')) {
-        this.datetimeClass = 'complited-task';
-      } else if (this.today.isBefore(this.datetime, 'day')) {
-        this.datetimeClass = 'future-task';
-      } else if (this.today.isAfter(this.datetime, 'day')) {
-        this.datetimeClass = 'overdue-task';
-      } else {
-        this.datetimeClass = 'today-task';
-      }
     },
 
     onCheckboxChanged: function() {
