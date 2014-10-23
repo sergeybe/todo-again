@@ -32,16 +32,16 @@ function(Backbone, moment, TaskModel) {
 
     stats: function() {
       var complitedTasks = 0;
+      var overdueTasks = 0;
       var todayTasks = 0;
       var futureTasks = 0;
-      var overdueTasks = 0;
+      var today = moment(this.today);
 
       this.each(function(task) {
         if (task.get('complited')) {
           complitedTasks++;
         } else {
           var datetime = moment(task.get('datetime'));
-          var today = moment(this.today);
 
           if (today.isBefore(datetime, 'day')) {
             futureTasks++;
