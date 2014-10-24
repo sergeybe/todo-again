@@ -7,7 +7,7 @@ function(Backbone, moment, TaskModel) {
 
   return Backbone.Collection.extend({
     model: TaskModel,
-    url: '/static/data1.json',
+    url: 'static/data1.json',
     today: 0,
 
     parse: function(data) {
