@@ -11,6 +11,7 @@ var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var gutil = require('gulp-util');
 var rjs = require('requirejs');
+var base64 = require('gulp-base64');
 
 var swallowError = function(error) {
   console.log(error.toString());
@@ -46,6 +47,12 @@ gulp.task('scss', function() {
       cascade: false
     }))
     .on('error', swallowError)
+    .pipe(base64({
+        baseDir: './static/',
+        extensions: ['svg', 'png'],
+        maxImageSize: 8 * 1024,
+        debug: true
+    }))
     .pipe(gulp.dest('./static/'))
     .pipe(rename({suffix: '.min'}))
     .pipe(csso())
